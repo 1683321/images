@@ -1,1 +1,1 @@
-FROM harbor.eoffcn.com/library/debian:10.8
+FROM influxdb:2.7.4-alpine
