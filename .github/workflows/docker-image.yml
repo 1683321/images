@@ -19,7 +19,7 @@ jobs:
     - name: Log in to GitHub container registry
       uses: actions/checkout@v4
       with:
-        registry: harbor.eoffcn.com
+        registry: ${{ secrets.DOCKER_REGISTRY }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push the Docker image
