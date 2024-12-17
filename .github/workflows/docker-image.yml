@@ -17,6 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag harbor.eoffcn.com/library/influxdb:2.7.4-alpine
     - name: Log in to GitHub container registry
+      uses: actions/checkout@v4
       with:
         registry: harbor.eoffcn.com
         username: ${{ secrets.DOCKER_USERNAME }}
