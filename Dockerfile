@@ -1,1 +1,1 @@
-FROM influxdb:2.7.4-alpine
+FROM timescale/timescaledb-ha:pg17
