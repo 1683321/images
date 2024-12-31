@@ -1,1 +1,1 @@
-FROM timescale/timescaledb-ha:pg17
+FROM node
