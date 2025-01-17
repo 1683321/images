@@ -1,1 +1,1 @@
-FROM chengshiwen/influxdb:1.8.11-c1.2.0-data
+FROM chengshiwen/influxdb:1.8.11-c1.2.0-meta
