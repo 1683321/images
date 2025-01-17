@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM chengshiwen/influxdb:1.8.11-c1.2.0-data
