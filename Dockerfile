@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM chronograf:1.9.4
