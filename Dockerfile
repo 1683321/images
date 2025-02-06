@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM memcached:1.5.19-alpine
