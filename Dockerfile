@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM janusgraph/janusgraph:0.4.0
