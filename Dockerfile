@@ -1,1 +1,1 @@
-FROM nsqio/nsq:v1.1.0
+FROM nsqio/nsq:v1.0.0-compat
