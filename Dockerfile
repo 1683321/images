@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM cassandra:3.0.8
