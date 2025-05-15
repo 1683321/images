@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM milvusdb/milvus-config-tool:v0.1.2
