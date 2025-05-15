@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM milvus:v2.3.10
