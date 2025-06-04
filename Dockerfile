@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM docker.io/milvusdb/etcd:3.5.5-r4
