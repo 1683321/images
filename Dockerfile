@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM apachepulsar/pulsar:2.8.2
