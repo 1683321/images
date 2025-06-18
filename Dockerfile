@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM apache/apisix:3.6.0-debian
