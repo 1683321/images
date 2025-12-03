@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM n8nio/n8n:latest
