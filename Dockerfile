@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM apache/apisix-dashboard:3.0.0-alpine
