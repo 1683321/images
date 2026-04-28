@@ -1,1 +1,1 @@
-FROM node:10.24.1-alpine
+FROM  keking/kkfileview:4.1.0
