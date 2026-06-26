@@ -2,25 +2,45 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "matrix" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "matrix" ]
 
 jobs:
-
-  build:
-
+  build-and-push:
     runs-on: ubuntu-latest
+    
+    strategy:
+      max-parallel: 1
+      matrix:
+        image:
+          - "goharbor/harbor-db"
+          - "goharbor/redis-photon"
+          - "goharbor/trivy-adapter-photon"
+          - "goharbor/harbor-jobservice"
+          - "goharbor/harbor-portal"
+          - "goharbor/registry-photon"
+          - "goharbor/harbor-registryctl"
+          - "goharbor/harbor-core"
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag harbor.eoffcn.com/library/kkfileview:4.1.0
-    - name: Log in to GitHub container registry
-      uses: docker/login-action@v1
-      with:
-        registry: ${{ secrets.DOCKER_REGISTRY }}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Push the Docker image
-      run: docker push harbor.eoffcn.com/library/kkfileview:4.1.0
+      - uses: actions/checkout@v4
+
+      # 优化1：官方镜像库在 GitHub Actions 网络里偶尔会超时，加上 --platform 指定架构，拉取更稳。
+      - name: Pull original images
+        run: docker pull --platform linux/amd64 docker.io/${{ matrix.image }}:v2.15.1
+
+      # 优化2：由于 harbor.eoffcn.com/library 下面已经有一层路径了，可以直接用 / 连接。
+      # 这样推送后的完整地址是：harbor.eoffcn.com/library/goharbor/harbor-core:v2.15.1
+      - name: Tag images for private registry
+        run: docker tag docker.io/${{ matrix.image }}:v2.15.1 harbor.eoffcn.com/library/${{ matrix.image }}:v2.15.1
+
+      - name: Log in to Harbor container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push the Docker image
+        run: docker push harbor.eoffcn.com/library/${{ matrix.image }}:v2.15.1
