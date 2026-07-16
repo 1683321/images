@@ -1,1 +1,1 @@
-FROM  keking/kkfileview:4.1.0
+FROM  docker.io/goharbor/nginx-photon:v2.15.1
