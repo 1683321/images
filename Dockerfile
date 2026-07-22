@@ -1,1 +1,1 @@
-FROM alpine:3.23
+FROM gcr.io/kaniko-project/executor:debug
