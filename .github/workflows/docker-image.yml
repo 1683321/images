@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "apisix-ingress-controller" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "apisix-ingress-controller" ]
 
 jobs:
 
