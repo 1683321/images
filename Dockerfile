@@ -1,1 +1,1 @@
-FROM  docker.io/goharbor/nginx-photon:v2.15.1
+FROM  docker.io/bitnami/etcd:3.5.7-debian-11-r14
