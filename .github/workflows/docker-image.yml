@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "docker.io-bitnami-etcd" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "docker.io-bitnami-etcd" ]
 
 jobs:
 
@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag harbor.eoffcn.com/library/goharbor/nginx-photon:v2.15.1
+      run: docker build . --file Dockerfile --tag harbor.eoffcn.com/library/docker.io-bitnami-etcd:3.5.7-debian-11-r14
     - name: Log in to GitHub container registry
       uses: docker/login-action@v1
       with:
@@ -23,4 +23,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push the Docker image
-      run: docker push harbor.eoffcn.com/library/goharbor/nginx-photon:v2.15.1
+      run: docker push harbor.eoffcn.com/library/docker.io-bitnami-etcd:3.5.7-debian-11-r14
