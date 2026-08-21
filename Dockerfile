@@ -1,1 +1,1 @@
-FROM  docker.io/goharbor/nginx-photon:v2.15.1
+FROM  apache/apisix-ingress-controller:1.7.1
